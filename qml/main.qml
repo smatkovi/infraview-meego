@@ -12,11 +12,4 @@ PageStackWindow {
     showStatusBar: true
     showToolBar: true
     initialPage: MainPage { }
-
-    /* Shared with every page, so the overview does not have to be asked
-       again each time one of them needs the local address. */
-    property string eigeneIp: ""
-    property string eigenesNetz: ""
-    property string netzName: ""
-    property string netzArt: ""
 }

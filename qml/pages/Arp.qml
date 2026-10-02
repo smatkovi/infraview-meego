@@ -14,6 +14,10 @@ Page {
     }
 
     property bool laeuft: false
+    /* The note lives in the list's footer, and an id inside a footer cannot
+       be reached from out here -- the footer is its own component. So the
+       text is a property of the page and the footer binds to it. */
+    property string hinweistext: ""
 
     Component.onCompleted: holen()
 
@@ -28,13 +32,13 @@ Page {
         onAbschluss: {
             seite.laeuft = false
             if (daten.eintraege === undefined) {
-                hinweis.text = daten.fehler !== undefined ? daten.fehler : "No answer"
+                seite.hinweistext = daten.fehler !== undefined ? daten.fehler : "No answer"
                 return
             }
             for (var i = 0; i < daten.eintraege.length; ++i)
                 liste.model.append(daten.eintraege[i])
-            hinweis.text = daten.eintraege.length === 0
-                           ? "The cache is empty -- talk to something first." : ""
+            seite.hinweistext = daten.eintraege.length === 0
+                                ? "The cache is empty -- talk to something first." : ""
         }
     }
 
@@ -82,7 +86,7 @@ Page {
             }
         }
         footer: Text {
-            id: hinweis
+            text: seite.hinweistext
             width: liste.width - 32
             x: 16
             font.pixelSize: 18

@@ -26,6 +26,7 @@ Page {
     }
 
     property bool laeuft: false
+    property string netzbereich: ""
 
     Component.onCompleted: holen()
 
@@ -52,10 +53,7 @@ Page {
             art.wert = daten.art
             name.wert = daten.ssid
 
-            appWindow.eigeneIp = daten.ip
-            appWindow.eigenesNetz = daten.netz
-            appWindow.netzName = daten.ssid
-            appWindow.netzArt = daten.art
+            mainPage.netzbereich = daten.netz
         }
     }
 
@@ -115,8 +113,8 @@ Page {
             }
             Eintrag {
                 titel: "Devices in current network"
-                beschreibung: appWindow.eigenesNetz.length > 0
-                              ? appWindow.eigenesNetz : "Scan the local network"
+                beschreibung: mainPage.netzbereich.length > 0
+                              ? mainPage.netzbereich : "Scan the local network"
                 onClicked: pageStack.push(Qt.resolvedUrl("DeviceList.qml"))
             }
             Eintrag {
