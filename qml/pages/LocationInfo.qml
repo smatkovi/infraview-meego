@@ -68,7 +68,7 @@ Page {
                 x: 16
                 width: parent.width - 32
                 font.pixelSize: 18
-                color: (theme.inverted ? "#e06060" : "#b02020")
+                color: "#e06060"
                 wrapMode: Text.WordWrap
                 height: text.length > 0 ? paintedHeight + 16 : 0
             }

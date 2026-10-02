@@ -31,13 +31,13 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "InfraView " + fassung
                 font.pixelSize: 26
-                color: (theme.inverted ? "#ffffff" : "#000000")
+                color: "#ffffff"
             }
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: "Device network information"
                 font.pixelSize: 18
-                color: (theme.inverted ? "#909090" : "#5e5e5e")
+                color: "#909090"
             }
 
             Ueberschrift { text: "Origin" }

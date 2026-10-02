@@ -5,6 +5,6 @@ Text {
     x: 16
     width: parent ? parent.width - 32 : 0
     font.pixelSize: 19
-    color: (theme.inverted ? "#c0c0c0" : "#303030")
+    color: "#c0c0c0"
     wrapMode: Text.WordWrap
 }

@@ -14,7 +14,7 @@ Item {
         anchors.bottom: trenner.top
         anchors.bottomMargin: 4
         font.pixelSize: 22
-        color: (theme.inverted ? "#1e9ee8" : "#0b74b8")
+        color: "#1e9ee8"
     }
     Rectangle {
         id: trenner
@@ -23,6 +23,6 @@ Item {
         anchors.right: parent.right
         anchors.margins: 16
         height: 1
-        color: (theme.inverted ? "#404040" : "#b4b4b4")
+        color: "#404040"
     }
 }

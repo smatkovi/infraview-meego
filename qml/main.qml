@@ -12,4 +12,9 @@ PageStackWindow {
     showStatusBar: true
     showToolBar: true
     initialPage: MainPage { }
+
+    /* Black ground and white type, whatever the device is set to. The
+       platform's own chrome -- toolbar, buttons, text fields -- follows this
+       too; PageStackWindowStyle paints #000000 when it is set. */
+    Component.onCompleted: theme.inverted = true
 }

@@ -64,7 +64,7 @@ Page {
             x: 16
             width: parent.width - 32
             font.pixelSize: 17
-            color: (theme.inverted ? "#909090" : "#5e5e5e")
+            color: "#909090"
             wrapMode: Text.WordWrap
             height: paintedHeight + 10
         }
@@ -88,7 +88,7 @@ Page {
                 width: 90
                 text: model.hafen
                 font.pixelSize: 22
-                color: (theme.inverted ? "#1e9ee8" : "#0b74b8")
+                color: "#1e9ee8"
             }
             Text {
                 anchors.left: parent.left
@@ -96,7 +96,7 @@ Page {
                 anchors.verticalCenter: parent.verticalCenter
                 text: model.dienst
                 font.pixelSize: 20
-                color: (theme.inverted ? "#d0d0d0" : "#202020")
+                color: "#d0d0d0"
             }
         }
     }
@@ -110,7 +110,7 @@ Page {
         text: "Common ports only, and open means a connection was accepted -- "
               + "nmap's service and OS detection is not available on this device."
         font.pixelSize: 15
-        color: (theme.inverted ? "#707070" : "#787878")
+        color: "#707070"
         wrapMode: Text.WordWrap
     }
 

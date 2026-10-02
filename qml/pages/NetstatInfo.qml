@@ -62,7 +62,7 @@ Page {
                       + "Upstream reads the rest through a setuid helper; a package installed "
                       + "here gets no such privilege from aegis."
                 font.pixelSize: 16
-                color: (theme.inverted ? "#808080" : "#6a6a6a")
+                color: "#808080"
                 wrapMode: Text.WordWrap
             }
         }

@@ -78,7 +78,7 @@ Page {
                     anchors.verticalCenter: parent.verticalCenter
                     text: "InfraView"
                     font.pixelSize: 32
-                    color: (theme.inverted ? "#ffffff" : "#000000")
+                    color: "#ffffff"
                 }
                 BusyIndicator {
                     anchors.right: parent.right
@@ -100,7 +100,7 @@ Page {
                 text: "python3.11 was not found in /opt/wunderw. "
                       + "Nothing on these pages can be looked up without it."
                 font.pixelSize: 19
-                color: (theme.inverted ? "#e06060" : "#b02020")
+                color: "#e06060"
                 wrapMode: Text.WordWrap
             }
 
@@ -170,7 +170,7 @@ Page {
                 x: 16
                 text: "The resolver is the local proxy icd2 runs; the addresses behind it are not exposed."
                 font.pixelSize: 16
-                color: (theme.inverted ? "#808080" : "#6a6a6a")
+                color: "#808080"
                 wrapMode: Text.WordWrap
             }
         }

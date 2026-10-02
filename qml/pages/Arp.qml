@@ -61,19 +61,19 @@ Page {
                 Text {
                     text: model.name.length > 0 ? model.name : model.ip
                     font.pixelSize: 24
-                    color: (theme.inverted ? "#ffffff" : "#000000")
+                    color: "#ffffff"
                     elide: Text.ElideRight
                     width: parent.width
                 }
                 Text {
                     text: (model.name.length > 0 ? model.ip + "  " : "") + model.hw
                     font.pixelSize: 18
-                    color: (theme.inverted ? "#1e9ee8" : "#0b74b8")
+                    color: "#1e9ee8"
                 }
                 Text {
                     text: model.hwtyp + " on " + model.geraet
                     font.pixelSize: 16
-                    color: (theme.inverted ? "#808080" : "#6a6a6a")
+                    color: "#808080"
                 }
             }
             Rectangle {
@@ -82,7 +82,7 @@ Page {
                 anchors.right: parent.right
                 anchors.margins: 16
                 height: 1
-                color: (theme.inverted ? "#303030" : "#c4c4c4")
+                color: "#303030"
             }
         }
         footer: Text {
@@ -90,7 +90,7 @@ Page {
             width: liste.width - 32
             x: 16
             font.pixelSize: 18
-            color: (theme.inverted ? "#909090" : "#5e5e5e")
+            color: "#909090"
             wrapMode: Text.WordWrap
             height: text.length > 0 ? paintedHeight + 24 : 0
         }

@@ -86,7 +86,7 @@ Page {
             text: model.text
             font.family: "Nokia Pure Text Mono"
             font.pixelSize: 17
-            color: (theme.inverted ? "#d0d0d0" : "#202020")
+            color: "#d0d0d0"
             wrapMode: Text.WrapAnywhere
         }
     }

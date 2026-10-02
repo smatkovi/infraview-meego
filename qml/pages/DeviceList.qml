@@ -66,7 +66,7 @@ Page {
             x: 16
             width: parent.width - 32
             font.pixelSize: 17
-            color: (theme.inverted ? "#909090" : "#5e5e5e")
+            color: "#909090"
             wrapMode: Text.WordWrap
         }
     }
@@ -85,7 +85,7 @@ Page {
             height: 80
             Rectangle {
                 anchors.fill: parent
-                color: (theme.inverted ? "#2d2d2d" : "#c8c9ca")
+                color: "#2d2d2d"
                 visible: beruehrung.pressed
             }
             Text {
@@ -98,7 +98,7 @@ Page {
                 anchors.topMargin: 10
                 text: model.name.length > 0 ? model.name : model.ip
                 font.pixelSize: 23
-                color: model.selbst ? (theme.inverted ? "#1e9ee8" : "#0b74b8") : (theme.inverted ? "#ffffff" : "#000000")
+                color: model.selbst ? "#1e9ee8" : "#ffffff"
                 elide: Text.ElideRight
             }
             Text {
@@ -110,7 +110,7 @@ Page {
                       + (model.selbst ? "  ·  this device"
                                       : (model.ping ? "" : "  ·  quiet, found by ARP"))
                 font.pixelSize: 17
-                color: (theme.inverted ? "#909090" : "#5e5e5e")
+                color: "#909090"
                 elide: Text.ElideRight
             }
             Image {
@@ -126,7 +126,7 @@ Page {
                 anchors.right: parent.right
                 anchors.margins: 16
                 height: 1
-                color: (theme.inverted ? "#303030" : "#c4c4c4")
+                color: "#303030"
             }
             MouseArea {
                 id: beruehrung

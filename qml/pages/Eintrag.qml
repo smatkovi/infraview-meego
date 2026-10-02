@@ -13,7 +13,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        color: (theme.inverted ? "#2d2d2d" : "#c8c9ca")
+        color: "#2d2d2d"
         visible: beruehrung.pressed
     }
     Text {
@@ -23,7 +23,7 @@ Item {
         anchors.top: parent.top
         anchors.topMargin: 12
         font.pixelSize: 24
-        color: (theme.inverted ? "#ffffff" : "#000000")
+        color: "#ffffff"
     }
     Text {
         id: unterschrift
@@ -33,7 +33,7 @@ Item {
         anchors.top: ueberschrift.bottom
         anchors.topMargin: 2
         font.pixelSize: 17
-        color: (theme.inverted ? "#909090" : "#5e5e5e")
+        color: "#909090"
         elide: Text.ElideRight
     }
     Image {

@@ -9,7 +9,12 @@
 */
 #include <QApplication>
 #include <QDeclarativeComponent>
+#include <QEventLoop>
+#include <QGraphicsObject>
+#include <QTimer>
 #include <QDir>
+#include <QImage>
+#include <QPainter>
 #include <QTextStream>
 #include <unistd.h>
 #include <QDeclarativeContext>
@@ -90,6 +95,45 @@ static int pruefen(QDeclarativeEngine *maschine, const QString &verzeichnis)
     _exit(schlecht == 0 ? 0 : 1);
 }
 
+/* "infraview --bild <datei>" draws the window into a PNG without putting
+   anything on the screen -- WA_DontShowOnScreen lays the widget out and
+   renders it, but the compositor never sees it. That is how the look can be
+   checked while someone is using the phone. */
+static int abbilden(QDeclarativeView *ansicht, const QString &datei)
+{
+    ansicht->setAttribute(Qt::WA_DontShowOnScreen, true);
+    ansicht->resize(480, 854);
+    ansicht->show();
+
+    /* The page asks its helpers for data on the way up; without a turn of the
+       event loop the picture would show every field still empty. */
+    QEventLoop schleife;
+    QTimer::singleShot(6000, &schleife, SLOT(quit()));
+    schleife.exec();
+
+    /* com.nokia.meego turns its content to the orientation the phone reports,
+       so the window knows better than we do how big the canvas should be --
+       guess it and the picture comes out sideways and clipped. */
+    QGraphicsObject *wurzel = ansicht->rootObject();
+    if (wurzel && wurzel->property("width").toInt() > 0) {
+        ansicht->resize(wurzel->property("width").toInt(),
+                        wurzel->property("height").toInt());
+        QEventLoop nochmal;
+        QTimer::singleShot(500, &nochmal, SLOT(quit()));
+        nochmal.exec();
+    }
+
+    QImage bild(ansicht->size(), QImage::Format_ARGB32);
+    bild.fill(0);
+    QPainter maler(&bild);
+    ansicht->render(&maler);
+    maler.end();
+
+    const bool gut = bild.save(datei, "PNG");
+    QTextStream(stdout) << (gut ? "wrote " : "could not write ") << datei << "\n";
+    _exit(gut ? 0 : 1);
+}
+
 int main(int argc, char *argv[])
 {
     QApplication anwendung(argc, argv);
@@ -103,6 +147,11 @@ int main(int argc, char *argv[])
     ansicht.engine()->rootContext()->setContextProperty(QLatin1String("starter"), &starter);
     ansicht.engine()->rootContext()->setContextProperty(
         QLatin1String("fassung"), QLatin1String(INFRAVIEW_VERSION));
+
+    if (argc > 2 && QLatin1String(argv[1]) == QLatin1String("--bild")) {
+        ansicht.setSource(QUrl::fromLocalFile(QLatin1String("/opt/infraview/qml/main.qml")));
+        return abbilden(&ansicht, QString::fromLocal8Bit(argv[2]));
+    }
 
     if (argc > 1 && QLatin1String(argv[1]) == QLatin1String("--pruefen"))
         return pruefen(ansicht.engine(),

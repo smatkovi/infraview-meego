@@ -17,7 +17,7 @@ Item {
         anchors.rightMargin: 12
         anchors.verticalCenter: parent.verticalCenter
         font.pixelSize: 30
-        color: (theme.inverted ? "#ffffff" : "#000000")
+        color: "#ffffff"
         elide: Text.ElideRight
     }
     BusyIndicator {

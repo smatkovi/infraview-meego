@@ -82,7 +82,7 @@ Page {
             width: parent.width - 32
             text: seite.fehlertext
             font.pixelSize: 18
-            color: (theme.inverted ? "#e06060" : "#b02020")
+            color: "#e06060"
             wrapMode: Text.WordWrap
         }
     }
@@ -109,7 +109,7 @@ Page {
                 horizontalAlignment: Text.AlignRight
                 text: model.nummer
                 font.pixelSize: 22
-                color: (theme.inverted ? "#606060" : "#858585")
+                color: "#606060"
             }
             Text {
                 id: station
@@ -119,7 +119,7 @@ Page {
                 anchors.topMargin: 4
                 text: model.station
                 font.pixelSize: 22
-                color: model.station === "*" ? (theme.inverted ? "#707070" : "#787878") : (theme.inverted ? "#ffffff" : "#000000")
+                color: model.station === "*" ? "#707070" : "#ffffff"
             }
             Text {
                 anchors.right: parent.right
@@ -127,7 +127,7 @@ Page {
                 anchors.baseline: station.baseline
                 text: model.ms > 0 ? model.ms + " ms" : ""
                 font.pixelSize: 18
-                color: (theme.inverted ? "#1e9ee8" : "#0b74b8")
+                color: "#1e9ee8"
             }
             Text {
                 anchors.left: station.left
@@ -137,7 +137,7 @@ Page {
                 text: model.name
                 visible: model.name.length > 0
                 font.pixelSize: 16
-                color: (theme.inverted ? "#909090" : "#5e5e5e")
+                color: "#909090"
                 elide: Text.ElideRight
             }
         }

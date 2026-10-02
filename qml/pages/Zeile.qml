@@ -20,7 +20,7 @@ Item {
         anchors.leftMargin: 16
         horizontalAlignment: Text.AlignRight
         font.pixelSize: 20
-        color: (theme.inverted ? "#b0b0b0" : "#505050")
+        color: "#b0b0b0"
         wrapMode: Text.WordWrap
     }
     Text {
@@ -31,7 +31,7 @@ Item {
         anchors.rightMargin: 16
         font.pixelSize: 20
         font.bold: zeile.betont
-        color: (theme.inverted ? "#ffffff" : "#000000")
+        color: "#ffffff"
         wrapMode: Text.WrapAnywhere
     }
 }
