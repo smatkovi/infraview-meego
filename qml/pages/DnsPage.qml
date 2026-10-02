@@ -17,7 +17,10 @@ Page {
         ToolIcon { iconId: "toolbar-back"; onClicked: { abfrage.abbrechen(); pageStack.pop() } }
     }
 
-    property variant arten: ["A", "AAAA", "MX", "NS", "TXT", "SOA", "CNAME", "SRV", "PTR"]
+    /* ButtonRow here has checkedButton and nothing like a selected index, so
+       each button says for itself what it stands for. Five fit across the
+       screen; an address is answered with PTR whatever is picked. */
+    property string satzart: "A"
 
     Abfrage {
         id: abfrage
@@ -35,7 +38,7 @@ Page {
         if (eingabe.text.length === 0)
             return
         ausgabe.text = ""
-        abfrage.starte("dns", [eingabe.text, seite.arten[wahl.selectedIndex]])
+        abfrage.starte("dns", [eingabe.text, seite.satzart])
     }
 
     Flickable {
@@ -85,12 +88,11 @@ Page {
                     anchors.leftMargin: 16
                     anchors.right: parent.right
                     anchors.rightMargin: 16
-                    /* An address is always a PTR query whatever is picked
-                       here, so the row only matters for names. */
-                    Repeater {
-                        model: seite.arten
-                        Button { text: modelData }
-                    }
+                    Button { text: "A";    checked: true; onClicked: seite.satzart = "A" }
+                    Button { text: "AAAA"; onClicked: seite.satzart = "AAAA" }
+                    Button { text: "MX";   onClicked: seite.satzart = "MX" }
+                    Button { text: "NS";   onClicked: seite.satzart = "NS" }
+                    Button { text: "TXT";  onClicked: seite.satzart = "TXT" }
                 }
             }
 

@@ -7,6 +7,12 @@
 # on a meego element, or an id reached across a header/footer boundary, both
 # of which only bite when the object is actually built.
 #
+# What it does NOT cover: anything reached only from a signal handler. The
+# handlers never run, so a name that does not exist there stays invisible --
+# ButtonRow.selectedIndex sat in two pages for exactly that reason. Check
+# those against the component sources under
+# /usr/lib/qt4/imports/com/nokia/meego/ by hand.
+#
 #   tools/check-qml.sh               # the installed pages
 #   tools/check-qml.sh --kanari      # prove the check can fail, then check
 #

@@ -21,6 +21,9 @@ Page {
 
     property bool laeuft: false
     property variant alle: []
+    /* ButtonRow has checkedButton and no selected index, so the buttons set
+       this themselves. */
+    property int filter: 0
 
     Component.onCompleted: holen()
 
@@ -33,9 +36,9 @@ Page {
         liste.model.clear()
         for (var i = 0; i < alle.length; ++i) {
             var eintrag = alle[i]
-            if (sieb.selectedIndex === 1 && eintrag.zustand !== "LISTEN")
+            if (filter === 1 && eintrag.zustand !== "LISTEN")
                 continue
-            if (sieb.selectedIndex === 2 && eintrag.zustand !== "ESTABLISHED")
+            if (filter === 2 && eintrag.zustand !== "ESTABLISHED")
                 continue
             liste.model.append(eintrag)
         }
@@ -70,10 +73,12 @@ Page {
             anchors.leftMargin: 16
             anchors.right: parent.right
             anchors.rightMargin: 16
-            onCheckedButtonChanged: seite.zeigen()
-            Button { text: "All" }
-            Button { text: "Listening" }
-            Button { text: "Established" }
+            Button { text: "All"; checked: true
+                     onClicked: { seite.filter = 0; seite.zeigen() } }
+            Button { text: "Listening"
+                     onClicked: { seite.filter = 1; seite.zeigen() } }
+            Button { text: "Established"
+                     onClicked: { seite.filter = 2; seite.zeigen() } }
         }
 
         Text {
